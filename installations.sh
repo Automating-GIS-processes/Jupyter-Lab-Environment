@@ -6,14 +6,22 @@ cd /home/jovyan/work
 export GIT_COMMITTER_NAME=anonymous
 export GIT_COMMITTER_EMAIL=anon@localhost
 
-# Configure
-git clone https://github.com/geo-python/notebooks.git
+# Grab notebooks repository
+NOTEBOOK_DIR='/home/jovyan/work/notebooks'
+if [ -d "$NOTEBOOK_DIR" ]; then
+    # Change directories and pull
+    cd "$NOTEBOOK_DIR"
+    git pull origin master
+else
+    # Clone the notebooks directory
+    git clone https://github.com/geo-python/notebooks.git
+fi
 
-# Go to the repo
-cd /home/jovyan/work/notebooks
-
-# Pull
-git pull origin master
+# Create exercises directory if it doesn't exist
+EXERCISE_DIR='/home/jovyan/work/exercises'
+if [ ! -d "$EXERCISE_DIR" ]; then
+    mkdir $EXERCISE_DIR
+fi
 
 # Go to containing folder
-cd /home/jovyan/work/notebooks/notebooks
+cd "$NOTEBOOK_DIR"/notebooks
