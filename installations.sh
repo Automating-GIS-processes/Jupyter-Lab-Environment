@@ -6,8 +6,21 @@ cd /home/jovyan/work
 export GIT_COMMITTER_NAME=anonymous
 export GIT_COMMITTER_EMAIL=anon@localhost
 
+# Check for existince of autogis directory, make if missing
+QG_DIR="/home/jovyan/work/autogis"
+if [ ! -d "$QG_DIR" ]; then
+    mkdir $QG_DIR
+fi
+cd $QG_DIR
+
+# Create exercises directory if it doesn't exist
+EXERCISE_DIR="$QG_DIR/exercises"
+if [ ! -d "$EXERCISE_DIR" ]; then
+    mkdir $EXERCISE_DIR
+fi
+
 # Grab notebooks repository
-NOTEBOOK_DIR='/home/jovyan/work/autogis-notebooks'
+NOTEBOOK_DIR="$QG_DIR/notebooks"
 if [ -d "$NOTEBOOK_DIR" ]; then
     # Change directories and pull
     cd "$NOTEBOOK_DIR"
@@ -17,11 +30,7 @@ else
     git clone https://github.com/Automating-GIS-processes/autogis-notebooks.git
 fi
 
-# Create exercises directory if it doesn't exist
-EXERCISE_DIR='/home/jovyan/work/autogis-exercises'
-if [ ! -d "$EXERCISE_DIR" ]; then
-    mkdir $EXERCISE_DIR
-fi
 
-# Go to containing folder
-cd "$NOTEBOOK_DIR"/autogis-notebooks
+
+
+
