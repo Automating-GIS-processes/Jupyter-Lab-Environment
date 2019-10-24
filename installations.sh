@@ -16,6 +16,9 @@ AUTOGIS_DIR="/home/jovyan/work/autogis"
 AUTOGIS_EXERCISE_DIR="$AUTOGIS_DIR/exercises"
 AUTOGIS_NOTEBOOK_DIR="$AUTOGIS_DIR/notebooks"
 
+
+
+# -------GEOPYTHON FOLDERS-----------
 # Check for existince of geopython directory, make if missing
 if [ ! -d "$GEOPYTHON_DIR" ]; then
     mkdir $GEOPYTHON_DIR
@@ -32,10 +35,14 @@ if [ -d "$NOTEBOOKS_DIR" ]; then
 fi
 
 
+
+# -------AUTOGIS FOLDERS-----------
 # Check for existince of autogis directory, make if missing
 if [ ! -d "$AUTOGIS_DIR" ]; then
     mkdir $AUTOGIS_DIR
 fi
+
+# Navigate to autogis dir
 cd $AUTOGIS_DIR
 
 # Create exercises directory if it doesn't exist
