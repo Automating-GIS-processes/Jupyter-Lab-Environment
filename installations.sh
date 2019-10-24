@@ -33,10 +33,8 @@ if [ -d "$AUTOGIS_NOTEBOOK_DIR" ]; then
     git pull origin master
 else
     # Clone the notebooks directory
-    git clone https://github.com/Automating-GIS-processes/notebooks2019.git
+    git clone https://github.com/Automating-GIS-processes/notebooks.git
     
-    # Rename the folder as notebooks
-    mv notebooks2019 notebooks
 fi
 
 cd /home/jovyan/work
