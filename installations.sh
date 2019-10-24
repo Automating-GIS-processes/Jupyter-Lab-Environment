@@ -6,11 +6,15 @@ cd /home/jovyan/work
 export GIT_COMMITTER_NAME=anonymous
 export GIT_COMMITTER_EMAIL=anon@localhost
 
-# set directory names: 
-AUTOGIS_DIR="/home/jovyan/work/autogis"
+# set directory names for geopython: 
 GEOPYTHON_DIR="/home/jovyan/work/geopython"
 EXERCISES_DIR="/home/jovyan/work/exercises"
 NOTEBOOKS_DIR="/home/jovyan/work/notebooks"
+
+# set directory names for autogis:
+AUTOGIS_DIR="/home/jovyan/work/autogis"
+AUTOGIS_EXERCISE_DIR="$AUTOGIS_DIR/exercises"
+AUTOGIS_NOTEBOOK_DIR="$AUTOGIS_DIR/notebooks"
 
 # Check for existince of geopython directory, make if missing
 if [ ! -d "$GEOPYTHON_DIR" ]; then
@@ -35,16 +39,14 @@ fi
 cd $AUTOGIS_DIR
 
 # Create exercises directory if it doesn't exist
-EXERCISE_DIR="$AUTOGIS_DIR/exercises"
-if [ ! -d "$EXERCISE_DIR" ]; then
-    mkdir $EXERCISE_DIR
+if [ ! -d "$AUTOGIS_EXERCISE_DIR" ]; then
+    mkdir $AUTOGIS_EXERCISE_DIR
 fi
 
 # Grab notebooks repository
-NOTEBOOK_DIR="$AUTOGIS_DIR/notebooks"
-if [ -d "$NOTEBOOK_DIR" ]; then
+if [ -d "$AUTOGIS_NOTEBOOK_DIR" ]; then
     # Change directories and pull
-    cd "$NOTEBOOK_DIR"
+    cd "$AUTOGIS_NOTEBOOK_DIR"
     git pull origin master
 else
     # Clone the notebooks directory
