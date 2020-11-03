@@ -30,7 +30,12 @@ fi
 if [ -d "$AUTOGIS_NOTEBOOK_DIR" ]; then
     # Change directories and pull
     cd "$AUTOGIS_NOTEBOOK_DIR"
+    
+    # Stash local changes and pull
+    git stash save
     git pull origin master
+    git stash pop
+
 else
     # Clone the notebooks directory
     git clone https://github.com/Automating-GIS-processes/notebooks.git
